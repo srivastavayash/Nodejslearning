@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>Form</title>
+</head>
+
+<body>
+    <h1>
+        User details:
+    </h1>
+    <form action="/users" method="POST">
+        <label for="fname">firstName:</label><br>
+        <input type="text" id="fname" value="Yash" name="fname"><br>
+        <pre></pre>
+        <label for="lastName">LastName:</label><br>
+        <input type="text" value="Srivastava" id="lastName" name="lastName"><br>
+        <pre></pre>
+        <input type="submit" value="Submit">
+    </form>
+
+    <button class="btnjson">Get Json</button>
+    <button class="btn">Update</button>
+    <button class="dlt">Delete</button>
+
+    <script>
+        const btn = document.querySelector('.btn');
+        const btnjson = document.querySelector('.btnjson');
+        const btndelete = document.querySelector('.dlt');
+        const fname = document.querySelector('input[name="fname"]');
+
+
+        btnjson.addEventListener('click', () => {
+            console.log('clicked for JSON data');
+            fetch('/users').then(res => res.json()).then(data => {
+                data.users.forEach(element => {
+                    console.log(element);
+                });
+            });
+        });
+
+
+        btn.addEventListener('click', () => {
+            console.log('clicked for Update');
+            const endPoint = '/users';
+            const id = fname.value;
+            fetch(endPoint + '/' + id, {
+                method: 'put'
+            }).then(res => res.json()).then(data => console.log(data));
+        });
+
+        btndelete.addEventListener('click', () => {
+            console.log('clicked for Delete');
+            const endPoint = '/users';
+            const id = fname.value;
+            fetch(endPoint + '/' + id, {
+                method: 'Delete'
+            }).then(res => res.json()).then(data => console.log(data));
+        });
+    </script>
+</body>
+
+</html>

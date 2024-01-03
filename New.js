@@ -1,0 +1,14 @@
+// const Newc=require('./index.js');
+const mod=require('./mod.js');
+// const Newc1=require('./index2.js');
+// Newc.Tr();
+// // // const Myname=`${Newc.bro1.first} ${Newc.bro1.last}`;
+// // const Myname1=`${Newc1.bro2.first} ${Newc1.bro2.last}`;
+// console.log(Myname);
+// console.log(Myname1);
+const frnd=new mod('Yash','Srivastava');
+const frnd2=new mod('Sunita','Srivastava');
+const frnd3=new mod('Shiwangi','Srivastava');
+console.log(frnd.msg());
+console.log(frnd2.msg());
+console.log(frnd3.msg());
